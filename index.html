@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Caixa2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="Bank">
+        <h1>Caixa</h1>
+        <h2 id="saldo">10000</h2>
+        <button id="saque">Saque</button>
+        <button id="deposit">Deposit</button>
+    </div>
+    <script>
+        const firstDeposit = document.getElementById('deposit')  
+        firstDeposit.addEventListener('click' , function() {
+            let valorDeposito = Number(prompt('Enter the value'))
+            let conta = Number(document.getElementById('saldo').textContent);
+            if(valorDeposito > 0) {
+                let calculo = conta + valorDeposito; 
+                 document.getElementById('saldo').textContent=calculo 
+            }
+            else {
+                alert('nao foi possivel efetuar o deposito.')
+            }
+        });
+
+       const firtSaque = document.getElementById('saque')
+       firtSaque.addEventListener('click' , function() {
+            let valorSaque = Number(prompt('Enter the value'))
+            let conta1 =  Number(document.getElementById('saldo').textContent)
+            if(valorSaque > 0) {
+                let calculo1 = conta1 - valorSaque;
+                document.getElementById('saldo').textContent=calculo1;
+            }
+            else {
+                alert('nao foi possivel efetuar o saque')
+            }
+       })
+        
+
+
+
+    </script>
+</body>
+</html>
+    
+    
