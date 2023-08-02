@@ -21,6 +21,7 @@
             if(valorDeposito > 0) {
                 let calculo = conta + valorDeposito; 
                  document.getElementById('saldo').textContent=calculo 
+                 alert('Deposito efetuado com sucesso')
             }
             else {
                 alert('nao foi possivel efetuar o deposito.')
@@ -31,9 +32,13 @@
        firtSaque.addEventListener('click' , function() {
             let valorSaque = Number(prompt('Enter the value'))
             let conta1 =  Number(document.getElementById('saldo').textContent)
-            if(valorSaque > 0) {
+             if(valorSaque > conta1) {
+                alert('Saldo negativo, nao foi possivel efetuar o saque')
+            }
+            else if(valorSaque > 0) {
                 let calculo1 = conta1 - valorSaque;
                 document.getElementById('saldo').textContent=calculo1;
+                alert('saque efetuado com sucesso')
             }
             else {
                 alert('nao foi possivel efetuar o saque')
