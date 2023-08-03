@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>Caixa2</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="Bank">
         <h1>Caixa</h1>
@@ -14,42 +16,21 @@
         <button id="deposit">Deposit</button>
     </div>
     <script>
-        const firstDeposit = document.getElementById('deposit')  
-        firstDeposit.addEventListener('click' , function() {
-            let valorDeposito = Number(prompt('Enter the value'))
+        document.getElementById('deposit').addEventListener('click', () => efetuarOperacao('deposito'));
+        document.getElementById('saque').addEventListener('click', efetuarOperacao);
+
+        function efetuarOperacao(tipoOperacao) {
+            let valor = Number(prompt('Enter the value'))
             let conta = Number(document.getElementById('saldo').textContent);
-            if(valorDeposito > 0) {
-                let calculo = conta + valorDeposito; 
-                 document.getElementById('saldo').textContent=calculo 
-                 alert('Deposito efetuado com sucesso')
+            let isDeposito = tipoOperacao === 'deposito';
+            if (!isDeposito && (valor > conta)) return alert('Saldo negativo, nao foi possivel efetuar o saque')
+            if (valor > 0) {
+                document.getElementById('saldo').textContent = isDeposito ? conta + valor : conta - valor;
+                return alert('operacao efetuada com sucesso');
             }
-            else {
-                alert('nao foi possivel efetuar o deposito.')
-            }
-        });
-
-       const firtSaque = document.getElementById('saque')
-       firtSaque.addEventListener('click' , function() {
-            let valorSaque = Number(prompt('Enter the value'))
-            let conta1 =  Number(document.getElementById('saldo').textContent)
-             if(valorSaque > conta1) {
-                alert('Saldo negativo, nao foi possivel efetuar o saque')
-            }
-            else if(valorSaque > 0) {
-                let calculo1 = conta1 - valorSaque;
-                document.getElementById('saldo').textContent=calculo1;
-                alert('saque efetuado com sucesso')
-            }
-            else {
-                alert('nao foi possivel efetuar o saque')
-            }
-       })
-        
-
-
-
+            alert('nao foi possivel efetuar o deposito')
+        }
     </script>
 </body>
+
 </html>
-    
-    
